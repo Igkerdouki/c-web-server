@@ -1,21 +1,44 @@
-# HTTP Web Server (C)
+# C Chat Server (Raw TCP + HTTP)
 
-This project implements a basic HTTP web server using raw TCP sockets in C.
+A fully functional chat server built **from scratch in C** using raw TCP sockets and the HTTP protocol.
 
-It listens on a port, accepts client connections, parses HTTP requests,
-and serves responses back to the browser.
+This project implements:
+- A real HTTP server
+- Request routing
+- Query string parsing
+- In-memory message storage
+- Browser + curl clients
 
-Features:
-- Socket-based networking
-- HTTP request parsing
-- Multiple client handling
-- Static file serving
+No frameworks. No libraries. Just sockets, memory, and protocol handling.
 
-Built in C as part of a systems programming course.
-All networking and request-handling logic was written by me.
+---
 
-What I learned:
-- TCP/IP sockets
-- HTTP protocol
-- Concurrent server design
-- Low-level debugging
+##  Features
+
+- `GET /` — Web UI for interacting with the server  
+- `GET /chats` — Returns all messages  
+- `GET /post?user=NAME&message=TEXT` — Adds a message  
+- `GET /react?user=NAME&message=TEXT&id=N` — React to a message  
+
+---
+
+##  Demo
+
+Start the server:
+
+```bash
+gcc -Wall -Wextra -O2 http-server.c -o http-server
+./http-server
+
+Open in browser:
+
+http://localhost:PORT
+
+Post a message:
+
+http://localhost:PORT/post?user=Ioanna&message=I%20built%20a%20server
+
+View messages:
+<img width="824" height="128" alt="Screenshot 2025-12-30 at 02 42 41" src="https://github.com/user-attachments/assets/c4ea237b-52e1-429c-accc-ddb552d87bba" />
+
+http://localhost:PORT/chats
